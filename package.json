@@ -21,8 +21,10 @@
     "typeorm": "^0.3.17"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.14",
     "@types/express": "^4.17.17",
+    "@types/jsonwebtoken": "^9.0.3",
     "typescript": "^5.2.2"
   }
 }
