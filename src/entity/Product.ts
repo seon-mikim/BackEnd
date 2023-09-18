@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Category } from "./Category";
 
 @Entity()
 export class Product {
@@ -14,4 +15,21 @@ export class Product {
 	productInfoImage: string;
 	@Column()
 	price: number
+	@ManyToMany(() => Category, (category) => category.products)
+	@JoinTable({
+		name: 'productCategories',
+		joinColumn: {
+			name: 'productId',
+			referencedColumnName: 'productId'
+		},
+		inverseJoinColumn: {
+			name: 'categoryId',
+			referencedColumnName: 'categoryId'
+		}
+	})
+	categories: Category[]
+	@CreateDateColumn()
+	createdAt: Date
+	@UpdateDateColumn()
+	updatedAt: Date
 }
