@@ -3,16 +3,16 @@ import { Category } from "./Category";
 
 @Entity()
 export class Product {
-	@PrimaryGeneratedColumn('uuid')
+	@PrimaryGeneratedColumn()
 	productId: string;
 	@Column()
-	productCode: string;
+	shopName: string;
+	@Column()
+	discount: number;
 	@Column()
 	productName: string;
-	@Column()
-	thumbnail: string;
-	@Column()
-	productInfoImage: string;
+	@Column( 'simple-array' ,{nullable: true })
+	productInfoImages: string[];
 	@Column()
 	price: number
 	@ManyToMany(() => Category, (category) => category.products)
