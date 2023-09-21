@@ -26,12 +26,12 @@ app.use(
   }),
 );
 
-const port = process.env.PORT || 3000;
+const port = Number(process.env.PORT) || 3000;
 app.use('/auth', AuthRouter);
 app.use('/products',ProductRouter)
 app.use('/categories',CateoryRouter)
 
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0',() => {
     console.log("Express server has started on port 3000")
 })
